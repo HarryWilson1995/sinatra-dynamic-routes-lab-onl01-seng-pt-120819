@@ -22,10 +22,18 @@ class App < Sinatra::Base
     @arr.join(' ') + "."
   end
   
-  get '/:operation/:number1/:number2' do 
-    @num1 = params[:number1].to_i 
-    @num2 = params[:number2].to_i 
-    
-  end 
+   get '/:operation/:number1/:number2' do 
+    @num1 = params[:number1].to_i
+    @num2 = params[:number2].to_i
+    if params[:operation] == "add" 
+      "#{@num1 + @num2}"
+    elsif params[:operation] == "subtract" 
+      "#{@num2 - @num1}"
+    elsif params[:operation] == "divide"
+      "#{@num1 / @num2}"
+    elsif params[:operation] == "multiply"
+      "#{@num1 * @num2}"
+    end
+  end
   
 end
